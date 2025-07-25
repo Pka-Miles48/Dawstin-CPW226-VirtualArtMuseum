@@ -22,19 +22,27 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
         }
 
         /// <summary>
-        /// Displays a gallery of approved artworks to any logged-in user.
+        /// Displays the public gallery of artworks.
         /// </summary>
+        /// <remarks>
+        /// Retrieves all artworks with an <c>Status</c> of "Approved" to ensure only
+        /// reviewed and published submissions appear in the public-facing view.
+        /// Includes related <c>Artist</c> and <c>Collection</c> navigation properties
+        /// for display purposes.
+        /// </remarks>
+        /// <returns>A view showing approved artworks in the public gallery.</returns>
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var approvedArtworks = await _context.Artworks
+                .Where(a => a.Status == "Approved")
                 .Include(a => a.Artist)
                 .Include(a => a.Collection)
-                .Where(a => a.Status == "Approved")
                 .ToListAsync();
 
             return View(approvedArtworks);
         }
+
 
         /// <summary>
         /// Returns the submission form for artists to create a new artwork entry.

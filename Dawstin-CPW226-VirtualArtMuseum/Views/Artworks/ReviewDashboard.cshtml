@@ -1,0 +1,21 @@
+﻿@model IEnumerable<VisualArtMuseum.Models.Artwork>
+
+@foreach (var artwork in Model)
+{
+    <div class="review-entry">
+        <h4>@artwork.Title</h4>
+        <p><strong>Artist:</strong> @artwork.Artist.Name</p>
+        <p><strong>Medium:</strong> @artwork.Medium</p>
+        <p><strong>Description:</strong> @artwork.Description</p>
+
+        <form asp-action="Approve" method="post">
+            <input type="hidden" name="id" value="@artwork.ArtworkId" />
+            <input type="submit" value="Approve" class="btn btn-success" />
+        </form>
+
+        <form asp-action="Reject" method="post">
+            <input type="hidden" name="id" value="@artwork.ArtworkId" />
+            <input type="submit" value="Reject" class="btn btn-danger" />
+        </form>
+    </div>
+}

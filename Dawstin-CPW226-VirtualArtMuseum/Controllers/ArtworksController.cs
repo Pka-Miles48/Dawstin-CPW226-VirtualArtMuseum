@@ -92,5 +92,49 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
         }
 
         // You can add Edit, Delete, and Admin-specific review actions later!
+
+        /// <summary>
+        /// Displays the admin-only review dashboard showing all artwork submissions
+        /// currently marked as "UnderReview".
+        /// </summary>
+        /// <returns>A view populated with pending artworks for admin review.</returns>
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ReviewDashboard()
+        {
+            var pendingArtworks = await _context.Artworks
+                .Where(a => a.Status == "UnderReview")
+                .Include(a => a.Artist)
+                .ToListAsync();
+
+            return View(pendingArtworks);
+        }
+
+        // Admin POST: approve a submission
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Approve(int id)
+        {
+            var art = await _context.Artworks.FindAsync(id);
+            if (art != null)
+            {
+                art.Status = "Approved";
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("ReviewDashboard");
+        }
+
+        // Admin POST: reject a submission
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> Reject(int id)
+        {
+            var art = await _context.Artworks.FindAsync(id);
+            if (art != null)
+            {
+                art.Status = "Rejected";
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("ReviewDashboard");
+        }
     }
 }

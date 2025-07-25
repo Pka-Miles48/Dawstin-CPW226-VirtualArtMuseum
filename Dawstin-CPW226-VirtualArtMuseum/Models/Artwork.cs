@@ -58,9 +58,9 @@
 
         /// <summary>
         /// Indicates the current review state of the artwork submission.
-        /// Internal setter restricts updates to within the application logic (e.g., admins).
+        /// Internal setter restricts updates to within application logic (e.g., admins).
         /// Possible values: "UnderReview", "Approved", "Rejected".
         /// </summary>
-        public string Status { get; internal set; }
+        public string Status { get; internal set; } = "UnderReview";
     }
 }

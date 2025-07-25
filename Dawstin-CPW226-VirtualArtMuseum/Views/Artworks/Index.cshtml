@@ -1,0 +1,11 @@
+﻿@model IEnumerable<VisualArtMuseum.Models.Artwork>
+
+@foreach (var artwork in Model)
+{
+    <div class="artwork-entry">
+        <h4>@artwork.Title</h4>
+        <p><strong>Medium:</strong> @artwork.Medium</p>
+        <p><strong>Status:</strong> @artwork.Status</p>
+        <img src="@artwork.ImageUrl" alt="@artwork.Title" style="max-width:200px;" />
+    </div>
+}

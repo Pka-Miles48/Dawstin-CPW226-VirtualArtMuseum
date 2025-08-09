@@ -22,91 +22,7 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Dawstin_CPW226_VirtualArtMuseum.Models.Artist", b =>
-                {
-                    b.Property<int>("ArtistId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtistId"));
-
-                    b.Property<string>("Bio")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ArtistId");
-
-                    b.ToTable("Artists");
-                });
-
-            modelBuilder.Entity("Dawstin_CPW226_VirtualArtMuseum.Models.Artwork", b =>
-                {
-                    b.Property<int>("ArtworkId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtworkId"));
-
-                    b.Property<int>("ArtistId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CollectionId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Medium")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ArtworkId");
-
-                    b.HasIndex("ArtistId");
-
-                    b.HasIndex("CollectionId");
-
-                    b.ToTable("Artworks");
-                });
-
-            modelBuilder.Entity("Dawstin_CPW226_VirtualArtMuseum.Models.Collection", b =>
-                {
-                    b.Property<int>("CollectionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CollectionId"));
-
-                    b.Property<string>("Theme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CollectionId");
-
-                    b.ToTable("Collections");
-                });
-
-            modelBuilder.Entity("Dawstin_CPW226_VirtualArtMuseum.VirtualArt_Data.ApplicationUser", b =>
+            modelBuilder.Entity("Dawstin_CPW226_VirtualArtMuseum.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -185,6 +101,94 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Dawstin_CPW226_VirtualArtMuseum.Models.Artist", b =>
+                {
+                    b.Property<int>("ArtistId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtistId"));
+
+                    b.Property<string>("Bio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ArtistId");
+
+                    b.ToTable("Artists");
+                });
+
+            modelBuilder.Entity("Dawstin_CPW226_VirtualArtMuseum.Models.Artwork", b =>
+                {
+                    b.Property<int>("ArtworkId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtworkId"));
+
+                    b.Property<int>("ArtistId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CollectionId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Medium")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ArtworkId");
+
+                    b.HasIndex("ArtistId");
+
+                    b.HasIndex("CollectionId");
+
+                    b.ToTable("Artworks");
+                });
+
+            modelBuilder.Entity("Dawstin_CPW226_VirtualArtMuseum.Models.Collection", b =>
+                {
+                    b.Property<int>("CollectionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CollectionId"));
+
+                    b.Property<string>("Theme")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CollectionId");
+
+                    b.ToTable("Collections");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -350,7 +354,7 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Dawstin_CPW226_VirtualArtMuseum.VirtualArt_Data.ApplicationUser", null)
+                    b.HasOne("Dawstin_CPW226_VirtualArtMuseum.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -359,7 +363,7 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Dawstin_CPW226_VirtualArtMuseum.VirtualArt_Data.ApplicationUser", null)
+                    b.HasOne("Dawstin_CPW226_VirtualArtMuseum.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -374,7 +378,7 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Dawstin_CPW226_VirtualArtMuseum.VirtualArt_Data.ApplicationUser", null)
+                    b.HasOne("Dawstin_CPW226_VirtualArtMuseum.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -383,7 +387,7 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Dawstin_CPW226_VirtualArtMuseum.VirtualArt_Data.ApplicationUser", null)
+                    b.HasOne("Dawstin_CPW226_VirtualArtMuseum.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

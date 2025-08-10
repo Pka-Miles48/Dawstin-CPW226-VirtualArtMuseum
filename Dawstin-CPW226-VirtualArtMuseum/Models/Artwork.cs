@@ -62,5 +62,10 @@
         /// Possible values: "UnderReview", "Approved", "Rejected".
         /// </summary>
         public string Status { get; internal set; } = "UnderReview";
+
+        /// <summary>
+        /// Optional feedback explaining why the artwork was rejected.
+        /// </summary>
+        public string? FeedbackNote { get; set; }
     }
 }

@@ -126,12 +126,13 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
         // Admin POST: reject a submission
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Reject(int id)
+        public async Task<IActionResult> Reject(int id, string feedbackNote)
         {
             var art = await _context.Artworks.FindAsync(id);
             if (art != null)
             {
                 art.Status = "Rejected";
+                art.FeedbackNote = feedbackNote;
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction("ReviewDashboard");

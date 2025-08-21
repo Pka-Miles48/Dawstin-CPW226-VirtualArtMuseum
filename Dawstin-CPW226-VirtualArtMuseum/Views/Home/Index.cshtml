@@ -3,6 +3,33 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to the Virtual Art Museum</h1>
+    <p>Discover, submit, and curate digital art in a collaborative space.</p>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p><strong>Logged in as:</strong> @User.Identity.Name</p>
+
+        @if (User.IsInRole("Artist"))
+        {
+            <p><a class="btn btn-primary" href="/Artworks/Create">Submit New Artwork</a></p>
+            <p><a class="btn btn-info" href="/Artworks/MySubmissions">View Your Submissions</a></p>
+        }
+        else if (User.IsInRole("Admin"))
+        {
+            <p><a class="btn btn-warning" href="/Artworks/ReviewDashboard">Review Submissions</a></p>
+            <p><a class="btn btn-secondary" href="/Users/Manage">Manage Users</a></p>
+        }
+        else
+        {
+            <p>Thanks for logging in! Feel free to explore the gallery.</p>
+        }
+    }
+    else
+    {
+        <p><a class="btn btn-success" href="/Identity/Account/Login">Log in</a> or <a class="btn btn-outline-primary" href="/Identity/Account/Register">Register</a> to participate.</p>
+    }
+
+    <hr />
+    <p>Want to learn more about how this app was built? Check out <a href="https://learn.microsoft.com/aspnet/core">ASP.NET Core documentation</a>.</p>
 </div>

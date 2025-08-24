@@ -3,38 +3,11 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to the Virtual Art Museum!</h1>
-    <p>Explore digital exhibits, submit your own artwork, or help curate the collection.
-        Whether you're an artist or a curator, there's a place for you here.</p>
-
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Submit Artwork</h5>
-                    <p class="card-text">Artists can upload their work and receive feedback from curators.</p>
-                    <i class="bi bi-brush" style="font-size: 2rem;"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Review Gallery</h5>
-                    <p class="card-text">Admins can review submissions and curate the digital exhibit.</p>
-                    <i class="bi bi-eye" style="font-size: 2rem;"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+    <h1 class="display-4">Welcome to the Virtual Art Museum</h1>
+    <p>Discover, submit, and curate digital art in a collaborative space.</p>
 
     @if (User.Identity.IsAuthenticated)
     {
-        <div class="mt-3">
-            <a class="btn btn-success me-2" asp-controller="Account" asp-action="Login">Log In</a>
-            <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Register">Register</a>
-        </div>
-
         <p><strong>Logged in as:</strong> @User.Identity.Name</p>
 
         @if (User.IsInRole("Artist"))

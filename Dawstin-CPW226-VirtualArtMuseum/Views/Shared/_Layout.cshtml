@@ -3,6 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A virtual museum for exploring, submitting, and curating digital art.">
+    <meta name="author" content="Dawstin Waters">
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+    <title>Virtual Art Museum</title>
     <title>@ViewData["Title"] - Dawstin_CPW226_VirtualArtMuseum</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -24,6 +28,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
 
                         @if (User.IsInRole("Artist"))
@@ -52,7 +59,9 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - Dawstin_CPW226_VirtualArtMuseum - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2025 - Dawstin_CPW226_VirtualArtMuseum -
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> |
+            <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

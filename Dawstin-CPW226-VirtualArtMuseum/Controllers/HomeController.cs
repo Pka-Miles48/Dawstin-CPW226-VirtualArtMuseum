@@ -39,6 +39,15 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
         }
 
         /// <summary>
+        /// Displays the contact page for user inquiries.
+        /// </summary>
+        /// <returns>The contact view.</returns>
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        /// <summary>
         /// Displays an error page with diagnostic information.
         /// </summary>
         /// <returns>The error view with request ID details.</returns>

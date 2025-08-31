@@ -1,4 +1,6 @@
-﻿namespace Dawstin_CPW226_VirtualArtMuseum.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Dawstin_CPW226_VirtualArtMuseum.Models
 {
     /// <summary>
     /// Holds the login form data submitted by a user.
@@ -8,16 +10,20 @@
         /// <summary>
         /// The email address the user enters to log in.
         /// </summary>
+        [Required]
+        [EmailAddress]
         public string Email { get; internal set; }
 
         /// <summary>
         /// The password the user enters to log in.
         /// </summary>
+        [Required]
+        [DataType(DataType.Password)]
         public string Password { get; internal set; }
 
         /// <summary>
         /// Whether the user wants to stay logged in after closing the browser.
         /// </summary>
-        public bool RememberMe { get; internal set; }
+        public bool RememberMe { get; internal set; }            
     }
 }

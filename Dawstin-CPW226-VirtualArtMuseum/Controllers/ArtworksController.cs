@@ -76,6 +76,8 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
         /// <summary>
         /// Shows detailed info for a single artwork entry.
         /// </summary>
+        /// <param name="id">The ID of the artwork to display.</param>
+        /// <returns>The details view for the selected artwork, or a 404 if not found.</returns>
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
@@ -88,7 +90,7 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
                 return NotFound();
 
             return View(artwork);
-        }       
+        }
 
         /// <summary>
         /// Displays the admin-only review dashboard showing all artwork submissions
@@ -107,6 +109,11 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
         }
 
         // Admin POST: approve a submission
+        /// <summary>
+        /// Approves an artwork submission and updates its status.
+        /// </summary>
+        /// <param name="id">The ID of the artwork to approve.</param>
+        /// <returns>Redirects to the review dashboard.</returns>
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Approve(int id)
@@ -121,6 +128,14 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
         }
 
         // Admin POST: reject a submission
+        /// <summary>
+        /// Processes an admin rejection of an artwork submission.
+        /// </summary>
+        /// <param name="id">The ID of the artwork being rejected.</param>
+        /// <param name="feedbackNote">Optional curator feedback explaining the rejection.</param>
+        /// <returns>
+        /// Redirects to the review dashboard after updating the artwork's status and saving feedback.
+        /// </returns>
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Reject(int id, string feedbackNote)

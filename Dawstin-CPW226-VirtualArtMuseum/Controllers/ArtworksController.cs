@@ -25,7 +25,7 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
         /// Displays the public gallery of artworks.
         /// </summary>
         /// <remarks>
-        /// Retrieves all artworks with an <c>Status</c> of "Approved" to ensure only
+        /// Retrieves all artworks with a <c>Status</c> of "Approved" to ensure only
         /// reviewed and published submissions appear in the public-facing view.
         /// Includes related <c>Artist</c> and <c>Collection</c> navigation properties
         /// for display purposes.
@@ -42,7 +42,6 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
 
             return View(approvedArtworks);
         }
-
 
         /// <summary>
         /// Returns the submission form for artists to create a new artwork entry.
@@ -89,9 +88,7 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
                 return NotFound();
 
             return View(artwork);
-        }
-
-        // You can add Edit, Delete, and Admin-specific review actions later!
+        }       
 
         /// <summary>
         /// Displays the admin-only review dashboard showing all artwork submissions

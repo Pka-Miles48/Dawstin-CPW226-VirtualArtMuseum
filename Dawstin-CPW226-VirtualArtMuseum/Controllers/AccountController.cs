@@ -142,5 +142,55 @@ namespace Dawstin_CPW226_VirtualArtMuseum.Controllers
 
             return View(model);
         }
+
+        /// <summary>
+        /// Displays the Manage Account page for updating user settings.
+        /// </summary>
+        /// <returns>The Manage view with current user data.</returns>
+        [HttpGet]
+        public async Task<IActionResult> Manage()
+        {
+            var user = await userManager.GetUserAsync(User);
+            var model = new ManageAccountViewModel
+            {
+                Email = user.Email
+            };
+            return View(model);
+        }
+
+        /// <summary>
+        /// Handles updates to the user's account settings.
+        /// </summary>
+        /// <param name="model">The updated account info.</param>
+        /// <returns>The Manage view with success or error messages.</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Manage(ManageAccountViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.Email = model.Email;          
+
+            var result = await userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                ViewBag.Message = "Account updated successfully!";
+            }
+            else
+            {
+                ModelState.AddModelError("", "Update failed.");
+            }
+
+            return View(model);
+        }
     }
 }

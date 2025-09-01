@@ -33,32 +33,44 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
 
-                        @if (User.IsInRole("Artist"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Artworks" asp-action="Create">Submit Artwork</a>
-                            </li>
-                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(User.IsInRole("Artist") ? "" : "disabled")"
+                               asp-controller="Artworks" asp-action="Create"
+                               title="Submit Artwork (Artist access only)">Submit Artwork</a>
+                        </li>
 
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Artworks" asp-action="ReviewDashboard">Review Submissions</a>
-                            </li>
-                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(User.IsInRole("Admin") ? "" : "disabled")"
+                               asp-controller="Artworks" asp-action="ReviewDashboard"
+                               title="Review Submissions (Admin access only)">Review Submissions</a>
+                        </li>
                     </ul>
 
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             @if (User.Identity.IsAuthenticated)
                             {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Manage">Manage Account</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+                            </li>
                             }
                             else
-                            {  
+                            {
+                            <li class="nav-item">
                                 <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" asp-controller="Account" asp-action="ForgotPassword">Forgot Password</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" title="Log in to manage your account">Manage Account</a>
+                            </li>
                             }
                         </li>
                     </ul>

@@ -7,11 +7,10 @@
         <p><strong>Medium:</strong> @artwork.Medium</p>
         <p><strong>Status:</strong> @artwork.Status</p>
         <img src="@artwork.ImageUrl" alt="@artwork.Title" style="max-width:200px;" />
-
-        @* ✅ Show feedback if rejected and note exists *@
+      
         @if (artwork.Status == "Rejected" && !string.IsNullOrEmpty(artwork.FeedbackNote))
         {
-            <p style="color:darkred;"><strong>📝 Feedback:</strong> @artwork.FeedbackNote</p>
+            <p style="color:darkred;"><strong> Feedback:</strong> @artwork.FeedbackNote</p>
         }
     </div>
 }

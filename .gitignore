@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Dawstin-CPW226-VirtualArtMuseum/Properties/serviceDependencies.json

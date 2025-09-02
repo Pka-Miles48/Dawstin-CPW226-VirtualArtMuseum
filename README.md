@@ -3,6 +3,9 @@
 ## Project Description
 A role-based ASP.NET Core MVC web application where artists can submit digital artwork, curators can review and approve submissions, and visitors can explore a curated gallery. Built to showcase user-centered design, peer learning, and creative curation.
 
+## Live website
+In order to play Pig Dice, go check out the live website, in which is hosted by [live website](https://pka-miles48.github.io/Dawstin-CPW226-VirtualArtMuseum/)
+
 ### Key Features
 
 ## Features

@@ -3,9 +3,8 @@
 ## Project Description
 A role-based ASP.NET Core MVC web application where artists can submit digital artwork, curators can review and approve submissions, and visitors can explore a curated gallery. Built to showcase user-centered design, peer learning, and creative curation.
 
-### ✨ Key Features
+### Key Features
 
-```markdown
 ## Features
 
 - Role-based redirects for Artists, Admins, and Visitors
